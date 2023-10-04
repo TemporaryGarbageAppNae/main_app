@@ -32,7 +32,7 @@ import com.example.garbageapp.screen.theme.ui.onSecondary
 import com.example.garbageapp.screen.theme.ui.primary
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun LoginScreen(navController: NavController){
 
     var wallet by remember { mutableStateOf("") }
     var isError by remember { mutableStateOf(false) }

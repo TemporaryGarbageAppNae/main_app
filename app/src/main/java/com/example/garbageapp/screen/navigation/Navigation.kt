@@ -11,8 +11,11 @@ import com.example.garbageapp.screen.presentation.SignUpScreen
 fun Navigation() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Screen.LoginScreen.route) {
-        composable(route = Screen.LoginScreen.route) {
+    NavHost(navController = navController, startDestination = Screen.LoginScreen.route){
+        composable(route = Screen.LoginScreen.route){
+            LoginScreen(navController = navController)
+        }
+        composable(route = Screen.SignupScreen.route){
             SignUpScreen(navController = navController)
         }
     }
