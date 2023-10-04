@@ -5,5 +5,6 @@
   "login_str": "Entrar",
   "whats_your_name_str": "Qual seu nome?",
   "whats_your_address_str": "Qual seu endereço?",
-  "confirm_str": "Confirmar"
+  "confirm_str": "Confirmar",
+  "required_field_str": "Campo obrigatório"
 }

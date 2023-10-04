@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.garbageapp.R
+import com.example.garbageapp.Util
 import com.example.garbageapp.presentation.signin.components.ButtonLayout
 import com.example.garbageapp.presentation.signin.components.TextFieldLayout
 import com.example.garbageapp.screen.theme.ui.primary
@@ -34,6 +35,7 @@ fun SignUpScreen(navController: NavController){
     var isError_address by remember { mutableStateOf(false) }
     var errorMessage_name by remember { mutableStateOf("") }
     var errorMessage_address by remember { mutableStateOf("") }
+
 
     Surface( color = primary ) {
         Column(
@@ -55,7 +57,7 @@ fun SignUpScreen(navController: NavController){
                 Spacer(modifier = Modifier.height(76.dp))
                 
                 TextFieldLayout(
-                    text = "Qual o seu nome?",
+                    text = Util.getJsonItemFromAsset(navController.context, "strings.json", "whats_your_name_str"),
                     value = name, 
                     isError = isError_name,
                     errorMessage = errorMessage_name,
@@ -67,7 +69,7 @@ fun SignUpScreen(navController: NavController){
                 Spacer(modifier = Modifier.height(16.dp))
                 
                 TextFieldLayout(
-                    text = "Qual o seu endereço?",
+                    text = Util.getJsonItemFromAsset(navController.context, "strings.json", "whats_your_address_str"),
                     value = address,
                     isError = isError_address,
                     errorMessage = errorMessage_address,
@@ -79,7 +81,7 @@ fun SignUpScreen(navController: NavController){
                 Spacer(modifier = Modifier.height(16.dp))
                 
                 ButtonLayout(
-                    text = "Confirmar",
+                    text = Util.getJsonItemFromAsset(navController.context, "strings.json", "confirm_str"),
                     onClick = {
                         isError_name = false
                         errorMessage_name = ""
@@ -88,12 +90,12 @@ fun SignUpScreen(navController: NavController){
 
                         if (name.isEmpty()){
                             isError_name = true
-                            errorMessage_name = "Campo obrigatório"
+                            errorMessage_name = Util.getJsonItemFromAsset(navController.context, "strings.json", "required_field_str")
                             return@ButtonLayout
                         }
                         if (address.isEmpty()){
                             isError_address = true
-                            errorMessage_address = "Campo obrigatório"
+                            errorMessage_address = Util.getJsonItemFromAsset(navController.context, "strings.json", "required_field_str")
                             return@ButtonLayout
                         }
                         Toast.makeText(navController.context,"Conta criada, parabéns $name", Toast.LENGTH_SHORT).show()

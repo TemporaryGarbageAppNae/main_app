@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.TextDecoration.Companion.Underline
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.garbageapp.R
+import com.example.garbageapp.Util
 import com.example.garbageapp.presentation.signin.components.ButtonLayout
 import com.example.garbageapp.presentation.signin.components.TextFieldLayout
 import com.example.garbageapp.screen.theme.ui.onSecondary
@@ -58,7 +59,7 @@ fun LoginScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(76.dp))
 
                 TextFieldLayout(
-                    text = "Digite sua carteira",
+                    text = Util.getJsonItemFromAsset(navController.context, "strings.json", "insert_wallet_str"),
                     value = wallet,
                     isError = isError,
                     errorMessage = errorMessage,
@@ -70,14 +71,14 @@ fun LoginScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(16.dp))
                 
                 ButtonLayout(
-                    text = "Entrar",
+                    text = Util.getJsonItemFromAsset(navController.context, "strings.json", "login_str"),
                     onClick = {
                         isError = false
                         errorMessage = ""
 
                         if (wallet.isEmpty()){
                             isError = true
-                            errorMessage = "Campo obrigatório"
+                            errorMessage = Util.getJsonItemFromAsset(navController.context, "strings.json", "required_field_str")
                             return@ButtonLayout
                         }
                         Toast.makeText(
@@ -91,10 +92,10 @@ fun LoginScreen(navController: NavController) {
             Column ( verticalArrangement = Arrangement.Bottom) {
                 Row {
                     Text(
-                        text = "Não possui uma carteira? "
+                        text = Util.getJsonItemFromAsset(navController.context, "strings.json", "no_wallet?_str")
                     )
                     Text(
-                        text = "CRIE UMA!",
+                        text = Util.getJsonItemFromAsset(navController.context, "strings.json", "create_wallet_str"),
                         color = onSecondary,
                         style = TextStyle(
                             textDecoration = Underline
