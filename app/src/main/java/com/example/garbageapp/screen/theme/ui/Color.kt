@@ -1,4 +1,4 @@
-package com.example.garbageapp.ui.theme
+package com.example.garbageapp.screen.theme.ui
 
 import androidx.compose.ui.graphics.Color
 

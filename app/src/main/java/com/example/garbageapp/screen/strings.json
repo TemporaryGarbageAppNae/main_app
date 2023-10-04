@@ -1,0 +1,9 @@
+{
+  "insert_wallet_str": "Insira sua carteira",
+  "no_wallet?_str": "Não possui carteira?",
+  "create_wallet_str": "CRIE UMA!",
+  "login_str": "Entrar",
+  "whats_your_name_str": "Qual seu nome?",
+  "whats_your_address_str": "Qual seu endereço?",
+  "confirm_str": "Confirmar"
+}

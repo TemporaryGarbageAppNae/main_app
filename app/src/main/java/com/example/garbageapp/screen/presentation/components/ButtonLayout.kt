@@ -10,8 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.unit.dp
-import com.example.garbageapp.ui.theme.onPrimary
-import com.example.garbageapp.ui.theme.secondary
+import com.example.garbageapp.screen.theme.ui.onPrimary
+import com.example.garbageapp.screen.theme.ui.secondary
 
 @Composable
 fun ButtonLayout(

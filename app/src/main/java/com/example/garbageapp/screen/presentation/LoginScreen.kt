@@ -1,4 +1,4 @@
-package com.example.garbageapp.presentation.signin
+package com.example.garbageapp.screen.presentation
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -27,28 +27,17 @@ import androidx.navigation.NavController
 import com.example.garbageapp.R
 import com.example.garbageapp.presentation.signin.components.ButtonLayout
 import com.example.garbageapp.presentation.signin.components.TextFieldLayout
-import com.example.garbageapp.ui.theme.onSecondary
-import com.example.garbageapp.ui.theme.primary
+import com.example.garbageapp.screen.theme.ui.onSecondary
+import com.example.garbageapp.screen.theme.ui.primary
 
 @Composable
-fun LoginScreen(
-    navController: NavController
-) {
-    var wallet by remember {
-        mutableStateOf("")
-    }
+fun LoginScreen(navController: NavController) {
 
-    var isError by remember {
-        mutableStateOf(false)
-    }
+    var wallet by remember { mutableStateOf("") }
+    var isError by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf("") }
 
-    var errorMessage by remember {
-        mutableStateOf("")
-    }
-
-    Surface (
-        color = primary
-    ) {
+    Surface (color = primary) {
         Column(
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -63,13 +52,13 @@ fun LoginScreen(
                 Image(
                     painter = painterResource(id = R.drawable.ic_launcher_foreground),
                     contentDescription = "Logo",
-                    modifier = Modifier
-                        .size(160.dp)
+                    modifier = Modifier.size(160.dp)
                 )
 
                 Spacer(modifier = Modifier.height(76.dp))
 
                 TextFieldLayout(
+                    text = "Digite sua carteira",
                     value = wallet,
                     isError = isError,
                     errorMessage = errorMessage,
@@ -86,24 +75,20 @@ fun LoginScreen(
                         isError = false
                         errorMessage = ""
 
-                        if (wallet.isEmpty()) {
+                        if (wallet.isEmpty()){
                             isError = true
                             errorMessage = "Campo obrigatório"
                             return@ButtonLayout
-                        } else {
-                            Toast.makeText(
-                                navController.context,
-                                "Entrou! Com carteira: $wallet",
-                                Toast.LENGTH_SHORT
-                            ).show()
                         }
-                    }
-                )
+                        Toast.makeText(
+                            navController.context,
+                            "Entrou! Com carteira: $wallet",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    })
             }
 
-            Column (
-                verticalArrangement = Arrangement.Bottom
-            ) {
+            Column ( verticalArrangement = Arrangement.Bottom) {
                 Row {
                     Text(
                         text = "Não possui uma carteira? "

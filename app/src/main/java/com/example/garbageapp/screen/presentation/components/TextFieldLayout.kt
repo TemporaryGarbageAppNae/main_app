@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -16,12 +15,13 @@ import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.unit.dp
-import com.example.garbageapp.ui.theme.onError
-import com.example.garbageapp.ui.theme.onPrimary
+import com.example.garbageapp.screen.theme.ui.onError
+import com.example.garbageapp.screen.theme.ui.onPrimary
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TextFieldLayout(
+    text: String,
     value: String,
     isError: Boolean,
     errorMessage: String,
@@ -43,7 +43,7 @@ fun TextFieldLayout(
         ),
         shape = RoundedCornerShape(30.dp),
         placeholder = {
-            Text(text = "Insira sua carteira")
+            Text(text = text)
         },
         modifier = Modifier
             .border(
