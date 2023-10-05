@@ -20,10 +20,15 @@ import androidx.navigation.NavController
 import com.example.garbageapp.Util
 import com.example.garbageapp.presentation.signin.components.ButtonLayout
 import com.example.garbageapp.presentation.signin.components.TextFieldLayout
+import com.example.garbageapp.screen.presentation.components.DropdownFieldLayout
 import com.example.garbageapp.screen.theme.ui.primary
+
+
+
 
 @Composable
 fun HomeScreen(navController: NavController){
+
 
     var waste_type by remember { mutableStateOf("") }
     var isError_waste by remember { mutableStateOf(false) }
@@ -32,6 +37,19 @@ fun HomeScreen(navController: NavController){
     var quantity by remember { mutableStateOf("") }
     var isError_quantity by remember { mutableStateOf(false) }
     var errorMessage_quantity by remember { mutableStateOf("") }
+
+    fun HandleError(){
+        isError_waste = waste_type.isEmpty()
+        isError_quantity = quantity.isEmpty()
+        errorMessage_waste = when(isError_waste) {
+            true -> Util.getJsonItemFromAsset(navController.context, "strings.json", "waste_error_str")
+            false -> ""
+        }
+        errorMessage_quantity = when(isError_quantity) {
+            true -> Util.getJsonItemFromAsset(navController.context, "strings.json", "quantity_error_str")
+            false -> ""
+        }
+    }
 
     Surface (color = primary) {
         Column(
@@ -45,12 +63,13 @@ fun HomeScreen(navController: NavController){
             
             Spacer(modifier = Modifier.height(160.dp))
 
-            ListFieldLayout( //TODO: implement listFieldLayout component
-                text = Util.getJsonItemFromAsset(navController.context, "strings.json", "waste_type_str"), //TODO: waste_type_str
-                value = waste_type,
+            DropdownFieldLayout(
+                text = Util.getJsonItemFromAsset(navController.context, "strings.json", "waste_type_str"),
+                items = Util.getJsonItemFromAssetAsArray(navController.context, "strings.json", "waste_types_strs"), //TODO: implement this method
+                selectedItem = waste_type,
                 isError = isError_waste,
                 errorMessage = errorMessage_waste,
-                onValueChange = {
+                onItemSelected = {
                     waste_type = it
                 }
             )
@@ -58,7 +77,7 @@ fun HomeScreen(navController: NavController){
             Spacer(modifier = Modifier.height(16.dp))
 
             TextFieldLayout(
-                text = Util.getJsonItemFromAsset(navController.context,"strings.json","quantity_str"), //TODO: quantity_str
+                text = Util.getJsonItemFromAsset(navController.context,"strings.json","quantity_str"),
                 value = quantity,
                 isError = isError_quantity,
                 errorMessage = errorMessage_quantity,
@@ -69,29 +88,31 @@ fun HomeScreen(navController: NavController){
 
             Spacer(modifier = Modifier.height(16.dp))
 
+           /*
             InsertImgLayout( //TODO: implement insertImgLayout component
                 
             )
+            */
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Row {
                 ButtonLayout(
-                    text = Util.getJsonItemFromAsset(navController.context, "strings.json", "offer_str"), //TODO: offer_str
+                    text = Util.getJsonItemFromAsset(navController.context, "strings.json", "offer_str"),
                     onClick = {
-                        //TODO: implement offer button
+                        HandleError()
                     }
                 )
                 ButtonLayout(
-                    text = Util.getJsonItemFromAsset(navController.context, "strings.json", "give_away_str"), //TODO: give_away_str
+                    text = Util.getJsonItemFromAsset(navController.context, "strings.json", "give_away_str"),
                     onClick = {
-                        //TODO: implement give_away button
+                        HandleError()
                     }
                 )
             }
 
             Column( verticalArrangement = Arrangement.Bottom ) {
-                BottomNavLayout() //TODO: implement bottomNavLayout component
+                //BottomNavLayout() //TODO: implement bottomNavLayout component
             }
 
         }

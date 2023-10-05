@@ -41,6 +41,30 @@ class Util {
             return "null"
         }
 
+        fun getJsonItemFromAssetAsArray(context: Context, fileName: String, itemName: String): List<String> {
+            try {
+                val jsonString = getJsonDataFromAsset(context, fileName)
+                val jsonObject = JSONObject(jsonString)
+                if (jsonObject.has(itemName)) {
+                    val jsonArray = jsonObject.getJSONArray(itemName)
+                    val itemList = mutableListOf<String>()
+
+                    for (i in 0 until jsonArray.length()) {
+                        itemList.add(jsonArray.getString(i))
+                    }
+
+                    return itemList
+                } else {
+                    Log.i(TAG, "Element $itemName not found in JSON $fileName")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Log.i(TAG, "Could not get element $itemName as an array in JSON $fileName", e)
+            }
+            return emptyList()
+        }
+
+
         private const val TAG = "Util"
     }
 

@@ -6,5 +6,14 @@
   "whats_your_name_str": "Qual seu nome?",
   "whats_your_address_str": "Qual seu endereço?",
   "confirm_str": "Confirmar",
-  "required_field_str": "Campo obrigatório"
+  "required_field_str": "Campo obrigatório",
+  "waste_type_str": "Tipo de dejeto",
+  "quantity_str": "Quantidade",
+  "offer_str": "Ofertar",
+  "give_away_str": "Doar",
+  "waste_types_strs": [
+    "Plástico",
+    "Papel",
+    "Metal"
+  ]
 }
