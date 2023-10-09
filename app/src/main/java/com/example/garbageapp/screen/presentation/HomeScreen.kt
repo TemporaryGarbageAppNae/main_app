@@ -38,7 +38,7 @@ fun HomeScreen(navController: NavController){
     var isError_quantity by remember { mutableStateOf(false) }
     var errorMessage_quantity by remember { mutableStateOf("") }
 
-    fun HandleError(){
+    fun handleError(){
         isError_waste = waste_type.isEmpty()
         isError_quantity = quantity.isEmpty()
         errorMessage_waste = when(isError_waste) {
@@ -100,7 +100,7 @@ fun HomeScreen(navController: NavController){
                 ButtonLayout(
                     text = Util.getJsonItemFromAsset(navController.context, "strings.json", "offer_str"),
                     onClick = {
-                        HandleError()
+                        handleError()
                     }
                 )
             }

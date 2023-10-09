@@ -81,11 +81,7 @@ fun LoginScreen(navController: NavController){
                             errorMessage = Util.getJsonItemFromAsset(navController.context, "strings.json", "required_field_str")
                             return@ButtonLayout
                         }
-                        Toast.makeText(
-                            navController.context,
-                            "Entrou! Com carteira: $wallet",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast.makeText(navController.context,"Entrou! Com carteira: $wallet",Toast.LENGTH_SHORT).show()
                     })
             }
 
