@@ -18,14 +18,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.garbageapp.Util
-import com.example.garbageapp.presentation.signin.components.ButtonLayout
-import com.example.garbageapp.presentation.signin.components.TextFieldLayout
+import com.example.garbageapp.screen.presentation.components.ButtonLayout
 import com.example.garbageapp.screen.presentation.components.DropdownFieldLayout
+import com.example.garbageapp.screen.presentation.components.TextFieldLayout
 import com.example.garbageapp.screen.theme.ui.primary
 
 
 
-
+//TODO: Add swipe gesture to change screens
 @Composable
 fun HomeScreen(navController: NavController){
 
@@ -65,7 +65,7 @@ fun HomeScreen(navController: NavController){
 
             DropdownFieldLayout(
                 text = Util.getJsonItemFromAsset(navController.context, "strings.json", "waste_type_str"),
-                items = Util.getJsonItemFromAssetAsArray(navController.context, "strings.json", "waste_types_strs"), //TODO: implement this method
+                items = Util.getJsonItemFromAssetAsArray(navController.context, "strings.json", "waste_types_strs"),
                 selectedItem = waste_type,
                 isError = isError_waste,
                 errorMessage = errorMessage_waste,
@@ -99,12 +99,6 @@ fun HomeScreen(navController: NavController){
             Row {
                 ButtonLayout(
                     text = Util.getJsonItemFromAsset(navController.context, "strings.json", "offer_str"),
-                    onClick = {
-                        HandleError()
-                    }
-                )
-                ButtonLayout(
-                    text = Util.getJsonItemFromAsset(navController.context, "strings.json", "give_away_str"),
                     onClick = {
                         HandleError()
                     }

@@ -26,8 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.garbageapp.R
 import com.example.garbageapp.Util
-import com.example.garbageapp.presentation.signin.components.ButtonLayout
-import com.example.garbageapp.presentation.signin.components.TextFieldLayout
+import com.example.garbageapp.screen.presentation.components.ButtonLayout
+import com.example.garbageapp.screen.presentation.components.TextFieldLayout
 import com.example.garbageapp.screen.theme.ui.onSecondary
 import com.example.garbageapp.screen.theme.ui.primary
 
